@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f0f0f">
+<title>Radar Attività · Impatto Studio</title>
+<meta name="description" content="Nove domande per capire dove stai decidendo a sensazione. Meno di tre minuti, nessun numero da cercare.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<style>
+:root{
+  --nero:#0f0f0f; --nero-2:#171717; --riga:#2a2a28; --bianco:#f5f3ef; --grigio:#a9a7a1; --lime:#c8f135;
+  --rosso:#e8734a;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{background:var(--nero)}
+body{margin:0;color:var(--bianco);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+[hidden]{display:none!important}
+
+.wrap{max-width:560px;margin:0 auto;padding-inline:20px;padding-block:24px 48px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px}
+.marchio{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--grigio)}
+.passo{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grigio)}
+.barra{height:3px;background:var(--riga);border-radius:99px;overflow:hidden;margin-bottom:26px}
+.barra i{display:block;height:100%;background:var(--lime);width:0;transition:width .25s ease}
+
+h1{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:clamp(2.6rem,11vw,3.6rem);line-height:.92;letter-spacing:.01em;margin:0 0 14px}
+h1 em{font-style:normal;color:var(--lime)}
+.intro{color:var(--grigio);margin:0 0 26px;font-size:1.02rem}
+.intro b{color:var(--bianco);font-weight:500}
+
+.blocco-titolo{font-family:"Bebas Neue",Impact,sans-serif;font-size:1.9rem;line-height:1;letter-spacing:.02em;margin:0 0 20px}
+.blocco-titolo span{color:var(--lime)}
+
+.domanda{margin-bottom:26px}
+.domanda p{margin:0 0 12px;font-size:1.06rem;font-weight:500}
+.scelte{display:grid;gap:8px}
+.scelta{display:block;width:100%;text-align:left;padding:14px 16px;border:1px solid var(--riga);border-radius:10px;background:var(--nero-2);color:var(--bianco);font:inherit;cursor:pointer;transition:border-color .15s ease,background .15s ease}
+.scelta:hover{border-color:var(--grigio)}
+.scelta[aria-pressed="true"]{background:var(--lime);color:var(--nero);border-color:var(--lime);font-weight:700}
+
+.azioni{display:flex;gap:10px;align-items:center;margin-top:30px}
+.btn{min-height:52px;padding:0 22px;border-radius:100px;border:1px solid var(--riga);background:transparent;color:var(--bianco);font:inherit;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.btn.pieno{background:var(--lime);color:var(--nero);border-color:var(--lime)}
+.btn.pieno[disabled]{opacity:.35;cursor:not-allowed}
+.btn.piccolo{min-height:44px;padding:0 16px;font-weight:500;color:var(--grigio)}
+
+/* risultato */
+.eyebrow{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);margin:0 0 10px}
+.verdetto{font-family:"Bebas Neue",Impact,sans-serif;font-size:clamp(2.2rem,9vw,3rem);line-height:.96;margin:0 0 16px}
+.apertura{font-size:1.05rem;margin:0 0 28px}
+.sezione{margin-bottom:28px}
+.sezione h2{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grigio);font-weight:700;margin:0 0 12px}
+ul.punti{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ul.punti li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;font-size:1.02rem}
+ul.punti li::before{content:"";width:14px;height:2px;background:var(--rosso);border-radius:2px;margin-top:12px}
+ul.punti.ok li::before{background:var(--lime)}
+
+.risposta{border-left:3px solid var(--rosso);padding:2px 0 2px 14px;margin-bottom:18px}
+.risposta p{margin:0}
+.risposta .dom{color:var(--grigio);font-size:.9rem;margin-bottom:4px}
+.risposta .detto{font-weight:700;margin-bottom:6px}
+
+.priorita{border:1px solid var(--riga);border-radius:12px;padding:18px;background:var(--nero-2);margin-bottom:12px}
+.priorita .n{font-family:"Bebas Neue",Impact,sans-serif;font-size:1.5rem;line-height:1;color:var(--lime)}
+.priorita h3{font-size:1.08rem;margin:6px 0 8px}
+.priorita p{margin:0;color:var(--grigio)}
+.priorita p b{color:var(--bianco);font-weight:500}
+
+.chiusura{border-left:3px solid var(--lime);padding:2px 0 2px 14px;margin:0 0 30px;font-size:1.05rem}
+.chi{display:grid;gap:12px;margin-bottom:16px}
+.chi label{display:grid;gap:6px;font-size:.9rem;color:var(--grigio)}
+.chi input{min-height:48px;padding:0 14px;border:1px solid var(--riga);border-radius:10px;background:var(--nero-2);color:var(--bianco);font:inherit;font-size:1rem}
+.chi input:focus{border-color:var(--lime);outline:none}
+.uscite{display:grid;gap:10px}
+.uscite .btn{width:100%}
+.nota{color:var(--grigio);font-size:.9rem;margin-top:18px}
+.firma{margin-top:36px;padding-top:18px;border-top:1px solid var(--riga);color:var(--grigio);font-size:.88rem}
+.firma b{color:var(--bianco)}
+@media (prefers-reduced-motion:reduce){.barra i{transition:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="top">
+    <span class="marchio">Impatto Studio</span>
+    <span class="passo" id="passo"></span>
+  </div>
+  <div class="barra"><i id="barra"></i></div>
+
+  <section id="schermata"></section>
+</main>
+
+<script>
+(function(){
+'use strict';
+
+var WA = '393339018769';
+var CALENDLY = 'https://calendly.com/gabry-0796/prima-call-gratuita';
+
+var BLOCCHI = [
+  { titolo: 'Quanto ti costa <span>lavorare</span>', domande: [
+    { t:'Come ti paghi?',
+      r:['Una cifra fissa che ho deciso io','Prendo quello che resta','Non ho una regola'] },
+    { t:'Sai quanto ti costa ogni mese tenere aperta la tua attività?',
+      r:['Lo so con precisione','Ho un’idea','No'] },
+    { t:'Sai qual è il punto, ogni mese, in cui smetti di coprire i costi e inizi a guadagnare?',
+      r:['Sì','Più o meno','No'] }
+  ]},
+  { titolo: 'Come fai <span>i prezzi</span>', domande: [
+    { t:'Come hai deciso i prezzi o le tariffe che fai oggi?',
+      r:['Con un calcolo sui miei costi','Guardando i concorrenti','A sensazione'] },
+    { t:'Quand’è l’ultima volta che li hai rivisti?',
+      r:['Negli ultimi 12 mesi','Più di un anno fa','Mai'] },
+    { t:'Nell’ultimo anno hai rifiutato un lavoro perché non ti conveniva?',
+      r:['Sì, più di uno','Una volta','Mai'] }
+  ]},
+  { titolo: 'Come <span>decidi</span>', domande: [
+    { t:'Sai quali lavori ti fanno guadagnare e quali no?',
+      r:['Lo so','Ho un sospetto','No'] },
+    { t:'Ogni quanto guardi entrate e uscite?',
+      r:['Ogni mese','Ogni tanto','Quando qualcosa non torna'] },
+    { t:'L’ultima decisione importante come l’hai presa?',
+      r:['Con i numeri davanti','Un po’ di numeri e un po’ di istinto','A sensazione'] }
+  ]}
+];
+
+// una priorità per domanda: si attiva quando quella risposta è la più scoperta
+var PRIORITA = [
+  { h:'Mettiti tra i costi', p:'Prima di tutto decidi quanto vuoi che ti porti questo lavoro, anche in base alla vita che vuoi fare. Quella cifra è il tuo stipendio, e va trattata come l’affitto. <b>È da lì che partono tutti gli altri numeri: senza, nessuno è vero.</b>' },
+  { h:'Conta quanto ti costa stare aperto', p:'Il costo vero di ogni mese, non una stima, comprese le spese che arrivano una o due volte l’anno. <b>È il numero che ti dice quanto costa la tua attività e il minimo che deve incassare per reggersi in piedi.</b>' },
+  { h:'Trova il punto di pareggio', p:'È la cifra che devi incassare ogni mese per coprire tutti i costi, compreso il tuo stipendio: superata quella, generi utile. <b>Ti fa seguire il mese mentre è ancora in corso, non a conti chiusi.</b>' },
+  { h:'Scopri quanto ti costa ogni servizio', p:'Per ogni servizio, quanto ti costa davvero in tempo e in soldi. Il prezzo parte da lì, e il mercato serve dopo, per capire dove ti posizioni. <b>Sotto quel costo, ogni lavoro lo stai pagando tu.</b>' },
+  { h:'Rivedi i prezzi insieme ai costi', p:'Fai una revisione periodica: guarda se i costi della tua attività sono cambiati e se i prezzi devono seguirli o possono restare come sono. <b>Così il prezzo resta legato a quello che ti costa davvero lavorare.</b>' },
+  { h:'Decidi una soglia per dire di no', p:'La cifra sotto la quale un lavoro non ti conviene, stabilita prima che arrivi la richiesta. <b>Così quando ti chiamano sai già se prenderlo, senza doverci ripensare ogni volta.</b>' },
+  { h:'Separa i lavori che ti sostengono da quelli che ti costano', p:'Metti i lavori che fai in tre gruppi: quelli che sostengono l’attività, quelli di contorno che servono ma non rendono, quelli in cui perdi tempo e soldi. <b>Gli ultimi vanno rivisti o tolti, ed è così che liberi tempo per quelli che ti fanno crescere.</b>' },
+  { h:'Prevedi il mese, poi controllalo', p:'All’inizio una stima di come andrà il mese, poi il confronto con quello che succede davvero. <b>Così ti accorgi in tempo se il mese sta prendendo un’altra strada.</b>' },
+  { h:'Decidi con i numeri davanti', p:'Le decisioni importanti prendile guardando i dati reali della tua attività, non l’emozione del momento. <b>È questo che ti dà la sicurezza di sceglierle e poi di portarle avanti.</b>' }
+];
+
+// etichette brevi per il messaggio WhatsApp, così so cosa ha risposto
+var ETICHETTE = ['Come mi pago','Costi mensili','Punto di pareggio',
+                 'Come ho fatto i prezzi','Ultima revisione prezzi','Lavori rifiutati',
+                 'Lavori che rendono','Controllo entrate e uscite','Ultima decisione importante'];
+
+var OK = ['un compenso deciso da te','costi mensili sotto controllo','il punto di pareggio',
+          'prezzi costruiti sui tuoi costi','prezzi rivisti di recente','la capacità di dire di no a un lavoro',
+          'sai quali lavori rendono','un controllo mensile costante','decisioni prese con i numeri'];
+
+// cosa comporta ogni risposta scoperta: [risposta di mezzo, risposta peggiore]
+// niente etichette sulla persona, solo la conseguenza di quello che ha detto
+var CONSEGUENZE = [
+  ['Il tuo stipendio lo decide il mese. Finché non è una cifra che hai deciso tu, l’attività sembra reggersi, ma si regge perché ti accontenti di quello che avanza.',
+   'Prendi i soldi quando ti servono, non una cifra che hai deciso. Finché il tuo compenso non è un costo, anche i costi che calcoli non sono quelli veri, e su numeri non veri non puoi decidere niente.'],
+  ['Con un’idea i costi si sottostimano quasi sempre. Così pensi di guadagnare, e poi arriva la domanda più comune di tutte: lavoro bene, dove sono finiti i soldi?',
+   'Senza quel numero non sai dove vanno davvero i soldi, né quanto è sostenibile la tua attività. Tutto quello che pensi di guadagnare si basa su un conto che non hai mai fatto.'],
+  ['A metà mese non sai da che parte sei. È proprio quel numero che ti fa seguire l’andamento mentre il mese è ancora in corso.',
+   'Non sai mai se stai ancora lavorando per coprire i costi o se stai già generando utile. Lo scopri a mese chiuso, quando non puoi più farci niente.'],
+  ['Guardare il mercato è giusto e serve a sapere dove ti stai muovendo. Ma i loro prezzi nascono dai loro costi: se non ci metti sopra i tuoi, stai costruendo la tua attività sulla struttura di qualcun altro.',
+   'A sensazione si parte tutti. Ma un prezzo che non nasce dai tuoi costi non sa quanto tempo e quanti soldi ti porta via quel servizio, quindi non puoi sapere se ti sostiene o se ti sta solo tenendo occupato.'],
+  ['In un anno i costi cambiano quasi sempre. Serve una revisione periodica per capire se i prezzi devono seguirli o se possono restare così.',
+   'I costi si muovono da soli, i prezzi no. Senza una revisione non sai se quel prezzo regge ancora, o se stai lavorando per meno di prima senza averlo deciso.'],
+  ['Dire di no senza un criterio mette ansia, e resta sempre il dubbio di aver rifiutato il lavoro sbagliato. Con una soglia chiara decidi in un attimo e senza rimorsi.',
+   'Può voler dire che ti sono convenuti tutti, oppure che non hai un modo per capirlo. Sapere quanto ti costa un servizio, in tempo e in soldi, è quello che ti fa distinguere i lavori che ti sostengono da quelli che ti portano via energie.'],
+  ['Finché resta un sospetto, quel lavoro continui a farlo. Per crescere tutto quello che fa solo rumore deve sparire, ma prima devi sapere qual è.',
+   'Non tutti i lavori sono uguali. Alcuni sostengono l’attività, altri servono ma non rendono, altri ti fanno perdere tempo e soldi. Se non li distingui, è così che si finisce senza tempo per niente e senza guadagnare un granché.'],
+  ['Prima si fa una stima di come andrà il mese, poi si controlla come va davvero. Ogni tanto non basta: avere i dati e non guardarli è quasi peggio che non averli.',
+   'Così i numeri arrivano sempre dopo il problema: servono a capire cosa è successo, non a evitarlo. È come guardare la mappa solo dopo esserti perso.'],
+  ['L’istinto conta, ma sono i numeri a tenere accesa la parte razionale. Con un criterio chiaro prima di decidere, hai anche la sicurezza di andare avanti quando arrivano i dubbi.',
+   'Quando lavori in proprio le emozioni pesano, e non sempre consigliano bene. Senza un numero davanti la decisione non ha un criterio, e oggi non puoi dire se era quella giusta.']
+];
+
+var RISULTATO = {
+  titolo:'Ecco cosa dicono le tue risposte.',
+  apertura:'Qui sotto trovi i punti in cui oggi decidi senza numeri. È da lì che si parte.',
+  chiusura:'Prima i numeri. Poi le decisioni. Se vuoi, i tuoi numeri li mettiamo in fila insieme.'
+};
+
+// chi ha quasi tutto a posto: messaggio diverso e priorità fisse
+var RISULTATO_OK = {
+  titolo:'Le basi ci sono.',
+  apertura:'Conosci i tuoi costi, i prezzi partono da lì e i numeri li guardi. Il prossimo passo non è sistemare qualcosa, è usarli per crescere.',
+  chiusura:'Prima i numeri. Poi le decisioni. I numeri ce li hai: parliamo delle decisioni.',
+  priorita:[6,8]
+};
+
+var risposte = [null,null,null,null,null,null,null,null,null];
+var passo = 0; // 0,1,2 blocchi, 3 risultato
+var $ = function(id){ return document.getElementById(id); };
+var esc = function(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+
+function aggiornaTop(){
+  if (passo < 3){
+    $('passo').textContent = 'Blocco ' + (passo+1) + ' di 3';
+    $('barra').style.width = (passo/3*100) + '%';
+  } else {
+    $('passo').textContent = 'Il tuo Radar';
+    $('barra').style.width = '100%';
+  }
+}
+
+function vistaIntro(){
+  return '<h1>Scopri dove stai <em>decidendo a sensazione</em>.</h1>' +
+    '<p class="intro">Nove domande, nessun numero da cercare. Alla fine ti dico cosa oggi non puoi sapere della tua attività e <b>da dove partirei io</b>. Ci vogliono meno di tre minuti.</p>' +
+    '<p class="intro">Rispondi sinceramente: le risposte restano qui, le vedo solo se me le mandi tu.</p>';
+}
+
+function vistaBlocco(){
+  var b = BLOCCHI[passo], html = '';
+  if (passo === 0) html += vistaIntro();
+  html += '<p class="blocco-titolo">' + b.titolo + '</p>';
+  b.domande.forEach(function(d, i){
+    var idx = passo*3 + i;
+    html += '<div class="domanda"><p>' + esc(d.t) + '</p><div class="scelte">';
+    d.r.forEach(function(r, v){
+      var scelto = risposte[idx] === v;
+      html += '<button type="button" class="scelta" data-d="' + idx + '" data-v="' + v + '" aria-pressed="' + (scelto ? 'true':'false') + '">' + esc(r) + '</button>';
+    });
+    html += '</div></div>';
+  });
+  var complete = risposte.slice(passo*3, passo*3+3).every(function(x){ return x !== null; });
+  html += '<div class="azioni">';
+  if (passo > 0) html += '<button type="button" class="btn piccolo" id="indietro">Indietro</button>';
+  html += '<button type="button" class="btn pieno" id="avanti"' + (complete ? '' : ' disabled') + '>' +
+          (passo === 2 ? 'Vedi il mio Radar' : 'Avanti') + '</button></div>';
+  return html;
+}
+
+function punteggi(){
+  var b = [0,0,0];
+  risposte.forEach(function(v, i){ b[Math.floor(i/3)] += (v || 0); });
+  return b;
+}
+
+// quasi tutto a posto: al massimo 4 punti su 18 e nessuna risposta peggiore
+function tuttoAPosto(){
+  var b = punteggi();
+  return b[0]+b[1]+b[2] <= 4 && risposte.indexOf(2) === -1;
+}
+
+// le risposte più scoperte, al massimo tre: prima la peggiore di ogni blocco,
+// così non escono tutte dalla stessa area, poi le altre
+function scoperte(){
+  var prime = [0,1,2].map(function(bi){ return peggioreDelBlocco(bi, -1); })
+    .filter(function(i){ return i >= 0; });
+  var altre = [];
+  risposte.forEach(function(v, i){ if (v > 0 && prime.indexOf(i) === -1) altre.push(i); });
+  var perGravita = function(x, y){ return risposte[y] - risposte[x] || x - y; };
+  return prime.sort(perGravita).concat(altre.sort(perGravita)).slice(0, 3);
+}
+
+function peggioreDelBlocco(bi, escludi){
+  var migliore = -1, punteggio = -1;
+  for (var i = bi*3; i < bi*3+3; i++){
+    if (i === escludi) continue;
+    var v = risposte[i] || 0;
+    if (v > punteggio){ punteggio = v; migliore = i; }
+  }
+  return punteggio > 0 ? migliore : -1;
+}
+
+function scegliPriorita(){
+  if (tuttoAPosto()) return RISULTATO_OK.priorita;
+  var b = punteggi();
+  var ordine = [0,1,2].sort(function(x,y){ return b[y] - b[x]; });
+  var uno = peggioreDelBlocco(ordine[0], -1);
+  var due = peggioreDelBlocco(ordine[1], uno);
+  if (due === -1) due = peggioreDelBlocco(ordine[2], uno);
+  if (due === -1) due = peggioreDelBlocco(ordine[0], uno);
+  return [uno, due].filter(function(x){ return x >= 0; });
+}
+
+// messaggio con nome, lavoro e tutte le risposte, così so con chi parlo e cosa ha detto
+function linkWhatsApp(pri){
+  var campo = function(id){ var el = $(id); return el ? el.value.trim() : ''; };
+  var A_CAPO = '\n';
+  var righe = risposte.map(function(v, i){ return ETICHETTE[i] + ': ' + BLOCCHI[Math.floor(i/3)].domande[i%3].r[v]; });
+  var msg = 'Ciao Gabriele, ho fatto il Radar.' + A_CAPO + A_CAPO +
+            'Mi chiamo: ' + campo('nome') + A_CAPO +
+            'Il mio lavoro: ' + campo('lavoro') + A_CAPO + A_CAPO +
+            'Le mie risposte:' + A_CAPO + righe.join(A_CAPO) + A_CAPO + A_CAPO +
+            'Da dove partire: ' + pri.map(function(i){ return PRIORITA[i].h.toLowerCase(); }).join(', poi ') + '.';
+  return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
+}
+
+function vistaRisultato(){
+  var ok = tuttoAPosto(), P = ok ? RISULTATO_OK : RISULTATO;
+  var pri = scegliPriorita();
+  var buone = [];
+  risposte.forEach(function(v, i){ if (v === 0) buone.push(OK[i]); });
+
+  var html = '<h2 class="verdetto">' + esc(P.titolo) + '</h2>';
+  html += '<p class="apertura">' + esc(P.apertura) + '</p>';
+
+  // ogni risposta scoperta citata parola per parola, con quello che comporta
+  var sc = scoperte();
+  if (sc.length){
+    html += '<div class="sezione"><h2>' + (ok ? 'Le risposte da guardare meglio' : 'Le risposte che ti lasciano più scoperto') + '</h2>';
+    sc.forEach(function(i){
+      var d = BLOCCHI[Math.floor(i/3)].domande[i%3];
+      html += '<div class="risposta"><p class="dom">' + esc(d.t) + '</p>' +
+              '<p class="detto">Hai risposto «' + esc(d.r[risposte[i]]) + '»</p>' +
+              '<p>' + esc(CONSEGUENZE[i][risposte[i]-1]) + '</p></div>';
+    });
+    html += '</div>';
+  }
+
+
+  if (buone.length){
+    html += '<div class="sezione"><h2>Quello che hai già a posto</h2><ul class="punti ok">';
+    buone.slice(0,3).forEach(function(x){ html += '<li><span>' + esc(x) + '</span></li>'; });
+    html += '</ul></div>';
+  }
+
+  html += '<div class="sezione"><h2>Da dove partirei, in quest’ordine</h2>';
+  pri.forEach(function(idx, n){
+    var pr = PRIORITA[idx];
+    html += '<div class="priorita"><div class="n">0' + (n+1) + '</div><h3>' + esc(pr.h) + '</h3><p>' + pr.p + '</p></div>';
+  });
+  html += '<p class="nota">Come farlo lo vediamo insieme, sui numeri veri della tua attività.</p>';
+  html += '</div>';
+
+  html += '<p class="chiusura">' + esc(P.chiusura) + '</p>';
+
+  html += '<div class="chi">' +
+    '<label>Come ti chiami<input id="nome" type="text" autocomplete="given-name"></label>' +
+    '<label>Che lavoro fai<input id="lavoro" type="text"></label>' +
+    '</div>';
+  html += '<div class="uscite">' +
+    '<a class="btn pieno" id="wa" href="' + linkWhatsApp(pri) + '" target="_blank" rel="noopener">Mandami il mio Radar su WhatsApp</a>' +
+    '<a class="btn" href="' + CALENDLY + '" target="_blank" rel="noopener">Prenota la call gratuita</a>' +
+    '</div>';
+  html += '<p class="nota">Ti rispondo io, di persona, anche se il risultato non ti torna.</p>';
+  html += '<div class="firma"><b>Gabriele Vaccaro</b><br>Ti aiuto a gestire i costi e le entrate della tua attività.</div>';
+  html += '<div class="azioni"><button type="button" class="btn piccolo" id="rifai">Rifai il Radar</button></div>';
+  return html;
+}
+
+function render(){
+  aggiornaTop();
+  $('schermata').innerHTML = passo < 3 ? vistaBlocco() : vistaRisultato();
+  window.scrollTo({ top: 0 });
+}
+
+// quando si sceglie una risposta aggiorno solo i bottoni, senza ridisegnare la schermata
+function segna(s){
+  var d = +s.dataset.d;
+  risposte[d] = +s.dataset.v;
+  document.querySelectorAll('.scelta[data-d="' + d + '"]').forEach(function(b){
+    b.setAttribute('aria-pressed', b === s ? 'true' : 'false');
+  });
+  var complete = risposte.slice(passo*3, passo*3+3).every(function(x){ return x !== null; });
+  $('avanti').disabled = !complete;
+}
+
+document.addEventListener('input', function(e){
+  if (e.target.id === 'nome' || e.target.id === 'lavoro'){
+    $('wa').href = linkWhatsApp(scegliPriorita());
+  }
+});
+
+document.addEventListener('click', function(e){
+  var s = e.target.closest('.scelta');
+  if (s){
+    segna(s);
+    return;
+  }
+  if (e.target.id === 'avanti'){ passo++; render(); return; }
+  if (e.target.id === 'indietro'){ passo--; render(); return; }
+  if (e.target.id === 'rifai'){ risposte = [null,null,null,null,null,null,null,null,null]; passo = 0; render(); return; }
+});
+
+render();
+})();
+</script>
+</body>
+</html>
