@@ -84,6 +84,13 @@ ul.punti.ok li::before{background:var(--lime)}
 .firma b{color:var(--bianco)}
 @media (prefers-reduced-motion:reduce){.barra i{transition:none}}
 </style>
+<script>
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "ytx9lcusv5");
+</script>
 </head>
 <body>
 <main class="wrap">
@@ -192,6 +199,13 @@ var RISULTATO_OK = {
 var risposte = [null,null,null,null,null,null,null,null,null];
 var passo = 0; // 0,1,2 blocchi, 3 risultato
 var $ = function(id){ return document.getElementById(id); };
+// Clarity: a che punto arriva chi fa il Radar
+var traccia = function(nome){ if (window.clarity) clarity('event', nome); };
+var iniziato = false;
+(function(){
+  var ref = new URLSearchParams(location.search).get('ref');
+  if (ref && window.clarity) clarity('set', 'provenienza', ref);
+})();
 var esc = function(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
 
 function aggiornaTop(){
@@ -343,6 +357,9 @@ function vistaRisultato(){
 
 function render(){
   aggiornaTop();
+  if (passo === 1) traccia('radar_blocco_2');
+  if (passo === 2) traccia('radar_blocco_3');
+  if (passo === 3) traccia('radar_completato');
   $('schermata').innerHTML = passo < 3 ? vistaBlocco() : vistaRisultato();
   window.scrollTo({ top: 0 });
 }
@@ -350,6 +367,7 @@ function render(){
 // quando si sceglie una risposta aggiorno solo i bottoni, senza ridisegnare la schermata
 function segna(s){
   var d = +s.dataset.d;
+  if (!iniziato){ iniziato = true; traccia('radar_iniziato'); }
   risposte[d] = +s.dataset.v;
   document.querySelectorAll('.scelta[data-d="' + d + '"]').forEach(function(b){
     b.setAttribute('aria-pressed', b === s ? 'true' : 'false');
@@ -365,6 +383,9 @@ document.addEventListener('input', function(e){
 });
 
 document.addEventListener('click', function(e){
+  var link = e.target.closest('a');
+  if (link && link.id === 'wa') traccia('radar_whatsapp');
+  if (link && link.href.indexOf('calendly.com') > -1) traccia('radar_call');
   var s = e.target.closest('.scelta');
   if (s){
     segna(s);
