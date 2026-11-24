@@ -40,6 +40,18 @@ h1,h2,h3{font-family:var(--titoli);font-weight:500;line-height:1.12;color:var(--
 h1{font-size:clamp(34px,8.4vw,60px)}
 h2{font-size:clamp(30px,6.6vw,46px);margin-bottom:24px}
 h3{font-size:24px}
+/* a capo: titoli e frasi brevi su righe equilibrate, niente parola sola in fondo ai paragrafi */
+h1,h2,h3,.citazione span,.posti,summary,.sotto-coll span,.consegna,.nota{text-wrap:balance}
+.citazione span,.sotto-coll span{display:block}
+@media (max-width:420px){
+  .btn{font-size:16px;padding:16px 20px;white-space:nowrap}
+  .hero .btn,.finale .btn{width:100%}
+  .btn svg{display:none}
+  .etichetta{font-size:14px;letter-spacing:.12em}
+  .citazione{font-size:min(21px,5.4vw);letter-spacing:0}
+  .citazione span{white-space:nowrap}
+}
+p,li{text-wrap:pretty;hyphens:manual}
 p+p{margin-top:16px}
 .grande{font-size:19px;color:var(--noce)}
 em{font-style:normal;color:var(--bacca)}
@@ -105,7 +117,7 @@ header a.mini{font-size:14px;font-weight:600;text-decoration:none;color:var(--ba
 .voci{display:grid;gap:16px;margin-top:8px}
 .voce{background:var(--latte);border-left:3px solid var(--lucine);padding:20px 22px;font-size:18px;line-height:1.5;color:var(--cioccolato)}
 .voce small{display:block;margin-top:10px;font-size:14px;color:var(--noce)}
-.screen{display:flex;align-items:flex-start;gap:12px;margin:16px -20px 0;padding:0 20px 6px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;scrollbar-width:none}
+.screen{display:flex;align-items:center;gap:12px;margin:16px -20px 0;padding:0 20px 6px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;scrollbar-width:none}
 .screen::-webkit-scrollbar{display:none}
 .screen img{flex:0 0 78%;max-width:320px;height:auto;border-radius:14px;box-shadow:0 2px 10px rgba(60,40,20,.12);scroll-snap-align:start}
 .scorri{font-size:13px;color:var(--noce);margin-top:8px}
@@ -225,7 +237,7 @@ footer a{text-decoration:none;border-bottom:1px solid #6B4A3A}
       <p class="etichetta">La mia storia</p>
       <h2>Sono cresciuta con un cassetto pieno di fotografie</h2>
       <p>Mio padre fotografava tutto. Noi che facevamo i compiti, le domeniche, le facce buffe. Poi si chiudeva in camera oscura e da un foglio bianco, piano piano, usciva una fotografia. Per me era una magia.</p>
-      <p>Ancora oggi, quando torno dai miei, apriamo quel cassetto. Ci passiamo le foto sul divano, "guarda questa", e ridiamo tutti: mia madre, mio padre, mio fratello. Trentasei anni dopo.</p>
+      <p>Ancora oggi, quando torno dai miei, apriamo quel cassetto.<br>Ci passiamo le foto tra le mani, insieme sul divano, e dopo pochi minuti qualcuno dice "guarda questa" e ridiamo tutti: mia madre, mio padre, mio fratello.<br>Trentasei anni dopo, senza stancarci mai.</p>
       <p>Però in quelle foto manca quasi sempre il pezzo forte. Mio padre. Era lui a scattarle.</p>
       <p><em>Per questo oggi fotografo famiglie intere.</em> Voglio che i vostri bambini, un giorno, aprano quel cassetto e ci trovino le foto di tutti.</p>
       <p>Il primo set di Natale l'ho fatto durante il Covid, quasi per gioco. I bambini erano chiusi in casa, nessuno li lasciava toccare niente. Io volevo che facessero qualcosa con le mani, un'esperienza che gli restasse dentro, nel tempo. Ad oggi, è ancora così.</p>
@@ -246,11 +258,11 @@ footer a{text-decoration:none;border-bottom:1px solid #6B4A3A}
     <h2>"E se mio figlio non sta fermo?"</h2>
     <p class="risposta">Non deve.</p>
     <div class="stretto">
-      <p>Il mio compito non è farli stare fermi. È lasciarli liberi.</p>
+      <p>Il mio compito non è farli stare fermi.<br>È lasciarli liberi.</p>
       <p>Nel set i bambini corrono, giocano, si nascondono, si sporcano pure. Le foto più belle nascono lì, mentre si divertono. Piccole pesti comprese: qui sono le benvenute.</p>
       <p>E la tata non serve portarla. Per quell'ora, la tata sono io.</p>
     </div>
-    <p class="citazione">Nessun bambino è bravo. E nessun bambino deve esserlo.</p>
+    <p class="citazione"><span>Nessun bambino è bravo.</span><span>Nessun bambino deve esserlo.</span></p>
   </div>
 </section>
 
@@ -370,7 +382,7 @@ footer a{text-decoration:none;border-bottom:1px solid #6B4A3A}
         <span class="badge">Il cassetto dei vostri ricordi</span>
         <h3>Luxury</h3>
         <p class="prezzo">250 €</p>
-        <p class="per">Le stampe sfuse in un cofanetto di legno, da passarvi sul divano come facevamo noi con il cassetto di papà. È la collezione a cui tengo di più.</p>
+        <p class="per">Le stampe sfuse in un cofanetto di legno, da passarvi sul divano come facevamo noi con il cassetto di papà. È&nbsp;la collezione a cui tengo di più.</p>
         <ul>
           <li>Sessione in studio, circa 30 minuti di scatti</li>
           <li>Oltre 30 foto digitali ritoccate</li>
@@ -381,7 +393,7 @@ footer a{text-decoration:none;border-bottom:1px solid #6B4A3A}
         <a class="btn" href="https://web.upyourshoot.com/it/selfappointment/calendars/public/12941/sessioni-natalizie">Scegliete la data</a>
       </div>
     </div>
-    <p class="sotto-coll">Scegliete collezione e data sul calendario online, pagate poi in studio.<br>Ogni collezione si può arricchire con prodotti extra.<br>
+    <p class="sotto-coll"><span>Scegliete collezione e data sul calendario online, pagate poi in studio.</span><span>Ogni collezione si può arricchire con prodotti extra.</span>
     <a class="btn-sec" href="https://wa.me/393392101280?text=Ciao%20Francesca%2C%20ho%20una%20domanda%20sul%20set%20di%20Natale"><svg width="18" height="18"><use href="#wa"/></svg> Prima volete chiedermi qualcosa? Scrivetemi</a></p>
   </div>
 </section>
