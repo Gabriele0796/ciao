@@ -7,6 +7,9 @@
 <meta name="description" content="Sessioni fotografiche di Natale per famiglie a Comiso. Un'ora nel set dell'armadio della nonna, i bambini liberi di giocare. Da 150 €.">
 <meta property="og:title" content="Set di Natale 2026 · La Champ Studio">
 <meta property="og:description" content="Quest'anno a Natale entrate tutti nella foto. Sessioni per famiglie a Comiso, da 150 €.">
+<meta property="og:image" content="https://gabriele0796.github.io/ciao/natale-la-champ/img/anteprima-condivisione.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="theme-color" content="#F6EFE6">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,6 +53,8 @@ em{font-style:normal;color:var(--bacca)}
 .foto{position:relative;background:var(--carta);border:1.5px dashed var(--lucine);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px;color:var(--noce);font-size:14px;line-height:1.4;overflow:hidden}
 .foto svg{width:30px;height:30px;stroke:var(--lucine)}
 .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.foto:has(img){border:0;padding:0}
+.come-foto{aspect-ratio:4/5;margin:4px 0 28px}
 .r34{aspect-ratio:3/4}.r45{aspect-ratio:4/5}.r11{aspect-ratio:1/1}.r32{aspect-ratio:3/2}.r916{aspect-ratio:9/16}
 
 .lucine{display:block;width:100%;max-width:340px;height:34px;margin:0 auto}
@@ -164,6 +169,7 @@ footer a{text-decoration:none;border-bottom:1px solid #6B4A3A}
   .storia .wrap,.resta .wrap{grid-template-columns:1fr 1fr;gap:72px;align-items:center}
   .set .wrap{grid-template-columns:.95fr 1.05fr;gap:72px}
   .passi{grid-template-columns:repeat(4,1fr)}
+  .come-foto{aspect-ratio:21/9;margin:8px 0 32px}
   .galleria{grid-template-columns:repeat(4,1fr);gap:14px}
   .galleria .foto:nth-child(1){grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
   .collezioni{grid-template-columns:repeat(3,1fr);align-items:stretch}
@@ -201,9 +207,9 @@ footer a{text-decoration:none;border-bottom:1px solid #6B4A3A}
       <p class="nota">Da 150 € · Restano una ventina di posti</p>
       <p class="completa"><b>Francesca, completa qui</b>Le foto arrivano prima di Natale? Se sì, entro che giorno? È il motivo più forte per prenotare subito: lo scriviamo qui, vicino al prezzo.</p>
     </div>
-    <div class="foto r45" data-foto="hero">
-      <svg><use href="#cam"/></svg>
-      Foto d'apertura: una famiglia nel set di Natale, un momento vero (risate, abbraccio). Verticale.
+    <div>
+      <div class="foto r45" data-foto="hero"><img src="img/hero-francesca.jpg" alt="Francesca che ride nel set di Natale, davanti all'armadio e agli alberi" width="1068" height="1600" fetchpriority="high" style="object-position:50% 30%"></div>
+      <p class="completa"><b>Francesca, completa qui</b>Per ora qui ci sei tu nel set. Se hai una foto di una famiglia che ride in questo set (o in quello dell'anno scorso), qui funziona ancora meglio: chi arriva dalla pubblicità deve vedersi subito nella foto.</p>
     </div>
   </div>
 </section>
@@ -223,7 +229,7 @@ footer a{text-decoration:none;border-bottom:1px solid #6B4A3A}
     </div>
     <div class="foto-coppia">
       <div class="foto r34" data-foto="infanzia"><svg><use href="#cam"/></svg>Una foto di Francesca da piccola, dal cassetto di suo padre</div>
-      <div class="foto r34" data-foto="francesca"><svg><use href="#cam"/></svg>Francesca mentre lavora, con la macchina in mano</div>
+      <div class="foto r34" data-foto="francesca"><img src="img/francesca-macchina.jpg" alt="Francesca seduta nell'armadio del set, con una macchina fotografica davanti agli occhi" width="868" height="1300" loading="lazy" style="object-position:50% 45%"></div>
     </div>
   </div>
 </section>
@@ -255,9 +261,9 @@ footer a{text-decoration:none;border-bottom:1px solid #6B4A3A}
       <p>Quando entrano gli si illuminano gli occhi. È il momento che aspetto tutto l'anno.</p>
     </div>
     <div class="set-foto">
-      <div class="foto r32" data-foto="set-video"><svg><use href="#cam"/></svg>Video di 10-15 secondi del set: i bambini che entrano e si guardano intorno. Se non c'è, una foto del set intero</div>
-      <div class="foto r11" data-foto="dettaglio-1"><svg><use href="#cam"/></svg>Dettaglio: peluche nell'armadio</div>
-      <div class="foto r11" data-foto="dettaglio-2"><svg><use href="#cam"/></svg>Dettaglio: lucine e campanelline</div>
+      <div class="foto r32" data-foto="set-intero"><img src="img/set-intero.jpg" alt="Il set di Natale 2026: il vecchio armadio con i peluche, gli alberi veri, il tappeto e i cuscini" width="1800" height="1202" loading="lazy"></div>
+      <div class="foto r11" data-foto="dettaglio-1"><img src="img/set-armadio.jpg" alt="L'armadio della nonna aperto, con i peluche nel cassetto" width="801" height="1200" loading="lazy" style="object-position:50% 62%"></div>
+      <div class="foto r11" data-foto="dettaglio-2"><img src="img/set-campanella.jpg" alt="Una mano appende una campanella all'albero di Natale" width="801" height="1200" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -267,6 +273,7 @@ footer a{text-decoration:none;border-bottom:1px solid #6B4A3A}
   <div class="wrap">
     <p class="etichetta">Come funziona</p>
     <h2>Un'ora in cui il mondo resta fuori</h2>
+    <div class="foto come-foto" data-foto="porta"><img src="img/set-porta.jpg" alt="Dalla porta dello studio si vede il set di Natale, pronto ad accogliere la famiglia" width="868" height="1300" loading="lazy" style="object-position:50% 58%"></div>
     <div class="passi">
       <div class="passo"><h3>Vi accolgo</h3><p>Arrivate in studio, ci conosciamo e prendiamo confidenza. Con calma.</p></div>
       <div class="passo"><h3>Scarpe via</h3><p>Entrate scalzi nel set, come a casa vostra.</p></div>
