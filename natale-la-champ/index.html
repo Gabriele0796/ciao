@@ -99,7 +99,7 @@ header a.mini{font-size:14px;font-weight:600;text-decoration:none;color:var(--ba
 .come .nota{text-align:center;margin-top:26px;font-size:15px}
 
 .galleria{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
-.galleria .foto:nth-child(1){grid-column:1/-1}
+.galleria .foto:nth-child(1),.galleria .largo{grid-column:1/-1}
 
 .resta .wrap{display:grid;gap:40px}
 .voci{display:grid;gap:16px;margin-top:8px}
@@ -176,6 +176,7 @@ footer a{text-decoration:none;border-bottom:1px solid #6B4A3A}
   .passi{grid-template-columns:repeat(4,1fr)}
   .come-foto{aspect-ratio:21/9;margin:8px 0 32px}
   .galleria{grid-template-columns:repeat(4,1fr);gap:14px}
+  .galleria .largo{grid-column:span 2}
   .galleria .foto:nth-child(1){grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
   .collezioni{grid-template-columns:repeat(3,1fr);align-items:stretch}
   .coll.top{transform:translateY(-12px)}
@@ -193,7 +194,6 @@ footer a{text-decoration:none;border-bottom:1px solid #6B4A3A}
   <symbol id="wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></symbol>
 </svg>
 
-<div class="bozza">Bozza per Francesca · i riquadri gialli sono le cose da completare</div>
 <header>
   <div class="wrap">
     <img src="img/logo-cioccolato.png" alt="La Champ Studio">
@@ -296,11 +296,15 @@ footer a{text-decoration:none;border-bottom:1px solid #6B4A3A}
     <div class="galleria">
       <div class="foto r32" data-foto="g1"><img src="img/famiglia-piedini.jpg" alt="Dall'alto: i piedini del fratellino sopra quelli del fratello, nel cassetto pieno di peluche" width="1600" height="1068" loading="lazy"></div>
       <div class="foto r34" data-foto="g2"><img src="img/famiglia-fratelli.jpg" alt="Due fratelli abbracciati dentro l'armadio di Natale, tra i peluche" width="1068" height="1600" loading="lazy" style="object-position:50% 62%"></div>
-      <div class="foto r34" data-foto="g3"><svg><use href="#cam"/></svg>Fratelli o neonato</div>
-      <div class="foto r34" data-foto="g4"><svg><use href="#cam"/></svg>Una faccia buffa</div>
-      <div class="foto r34" data-foto="g5"><svg><use href="#cam"/></svg>Con i nonni</div>
-      <div class="foto r34" data-foto="g6"><svg><use href="#cam"/></svg>Primo piano: mani, sguardi</div>
-      <div class="foto r34" data-foto="g7"><svg><use href="#cam"/></svg>Con l'animale di famiglia</div>
+      <div class="foto r34"><img src="img/papa-spalle.jpg" alt="Un papà ride con la figlia sulle spalle, la mamma dietro sorride" width="801" height="1200" loading="lazy" style="object-position:50% 35%"></div>
+      <div class="foto r34"><img src="img/risata-orso.jpg" alt="Una bambina ride a crepapelle abbracciata a un orso di peluche" width="801" height="1200" loading="lazy" style="object-position:50% 45%"></div>
+      <div class="foto r34"><img src="img/linguaccia.jpg" alt="Una bambina fa la linguaccia seduta in una cassa piena di peluche" width="801" height="1200" loading="lazy" style="object-position:50% 40%"></div>
+      <div class="foto r32 largo"><img src="img/tre-sdraiati.jpg" alt="Tre fratellini sdraiati sul tappeto, guancia a guancia, tra i peluche" width="1600" height="1068" loading="lazy"></div>
+      <div class="foto r34"><img src="img/tre-fratelli.jpg" alt="Tre fratellini seduti insieme sotto l'albero, con gli orsetti in braccio" width="801" height="1200" loading="lazy" style="object-position:50% 62%"></div>
+      <div class="foto r34"><img src="img/cani.jpg" alt="Tre cani di famiglia sdraiati sul tappeto del set di Natale" width="801" height="1200" loading="lazy" style="object-position:50% 75%"></div>
+      <div class="foto r34"><img src="img/bimbo-sdraiato.jpg" alt="Un bambino sdraiato tra i peluche sorride guardando in alto" width="801" height="1200" loading="lazy" style="object-position:50% 70%"></div>
+      <div class="foto r34"><img src="img/cane-orsetto.jpg" alt="Un labrador sdraiato con un orsetto col cappello di Babbo Natale" width="801" height="1200" loading="lazy" style="object-position:50% 50%"></div>
+      <div class="foto r32 largo"><img src="img/neonato-mamma.jpg" alt="Un neonato in braccio alla mamma guarda dritto verso l'obiettivo" width="1600" height="1068" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -322,7 +326,6 @@ footer a{text-decoration:none;border-bottom:1px solid #6B4A3A}
         <p class="voce">"Ci siamo sentiti come a casa, come se davanti avessimo un'amica."<small>Le famiglie, alla fine del set</small></p>
         <p class="voce">"Nelle foto siamo veramente noi, così come siamo a casa."<small>Le famiglie, quando ricevono le foto</small></p>
       </div>
-      <p class="completa"><b>Francesca, completa qui</b>Ho messo i messaggi che mi hai mandato, senza nomi né foto profilo. Mi confermi che le famiglie sono d'accordo a vederli qui, insieme alle foto dei bambini? E quante famiglie hai fotografato dal primo set di Natale a oggi, anche più o meno?</p>
       <div class="screen" aria-label="Messaggi delle famiglie">
         <img src="img/msg-bella.jpg" alt="Messaggio di una famiglia: Le foto sono stupende, mi hai fatto emozionare tantissimo. In queste foto riesco finalmente a vedermi bella." width="800" height="626" loading="lazy">
         <img src="img/msg-rimpianto.jpg" alt="Messaggio di una famiglia: Ieri sera ci siamo messi a guardare le foto. Riesci a cogliere gli attimi più autentici senza mai essere invasiva. L'unico vero rimpianto? Non averle fatte prima." width="739" height="1090" loading="lazy">
