@@ -105,8 +105,12 @@ header a.mini{font-size:14px;font-weight:600;text-decoration:none;color:var(--ba
 .voci{display:grid;gap:16px;margin-top:8px}
 .voce{background:var(--latte);border-left:3px solid var(--lucine);padding:20px 22px;font-size:18px;line-height:1.5;color:var(--cioccolato)}
 .voce small{display:block;margin-top:10px;font-size:14px;color:var(--noce)}
-.screen{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.screen{display:flex;align-items:flex-start;gap:12px;margin:16px -20px 0;padding:0 20px 6px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;scrollbar-width:none}
+.screen::-webkit-scrollbar{display:none}
+.screen img{flex:0 0 78%;max-width:320px;height:auto;border-radius:14px;box-shadow:0 2px 10px rgba(60,40,20,.12);scroll-snap-align:start}
+.scorri{font-size:13px;color:var(--noce);margin-top:8px}
 .resta{background:var(--carta-chiara)}
+.resta .wrap>div{min-width:0}
 
 .collezioni{display:grid;gap:22px;margin-top:12px}
 .coll{background:#FBF7F1;border:1px solid var(--carta);border-radius:20px;padding:30px 24px 26px;display:flex;flex-direction:column}
@@ -208,8 +212,7 @@ footer a{text-decoration:none;border-bottom:1px solid #6B4A3A}
       <p class="completa"><b>Francesca, completa qui</b>Le foto arrivano prima di Natale? Se sì, entro che giorno? È il motivo più forte per prenotare subito: lo scriviamo qui, vicino al prezzo.</p>
     </div>
     <div>
-      <div class="foto r45" data-foto="hero"><img src="img/hero-francesca.jpg" alt="Francesca che ride nel set di Natale, davanti all'armadio e agli alberi" width="1068" height="1600" fetchpriority="high" style="object-position:50% 30%"></div>
-      <p class="completa"><b>Francesca, completa qui</b>Per ora qui ci sei tu nel set. Se hai una foto di una famiglia che ride in questo set (o in quello dell'anno scorso), qui funziona ancora meglio: chi arriva dalla pubblicità deve vedersi subito nella foto.</p>
+      <div class="foto r45" data-foto="hero"><img src="img/hero-famiglia.jpg" alt="Una famiglia ride sul tappeto del set di Natale: il papà fa il solletico al figlio, la mamma tiene in braccio il fratellino" width="1068" height="1600" fetchpriority="high" style="object-position:50% 72%"></div>
     </div>
   </div>
 </section>
@@ -290,9 +293,9 @@ footer a{text-decoration:none;border-bottom:1px solid #6B4A3A}
     <p class="etichetta">Le famiglie degli anni scorsi</p>
     <h2>Così come siete a casa</h2>
     <div class="galleria">
-      <div class="foto r32" data-foto="g1"><svg><use href="#cam"/></svg>Famiglia intera, momento spontaneo</div>
-      <div class="foto r34" data-foto="g2"><svg><use href="#cam"/></svg>Neonato o bimbo piccolo</div>
-      <div class="foto r34" data-foto="g3"><svg><use href="#cam"/></svg>Fratelli insieme</div>
+      <div class="foto r32" data-foto="g1"><img src="img/famiglia-piedini.jpg" alt="Dall'alto: i piedini del fratellino sopra quelli del fratello, nel cassetto pieno di peluche" width="1600" height="1068" loading="lazy"></div>
+      <div class="foto r34" data-foto="g2"><img src="img/famiglia-fratelli.jpg" alt="Due fratelli abbracciati dentro l'armadio di Natale, tra i peluche" width="1068" height="1600" loading="lazy" style="object-position:50% 62%"></div>
+      <div class="foto r34" data-foto="g3"><svg><use href="#cam"/></svg>Fratelli o neonato</div>
       <div class="foto r34" data-foto="g4"><svg><use href="#cam"/></svg>Una faccia buffa</div>
       <div class="foto r34" data-foto="g5"><svg><use href="#cam"/></svg>Con i nonni</div>
       <div class="foto r34" data-foto="g6"><svg><use href="#cam"/></svg>Primo piano: mani, sguardi</div>
@@ -318,12 +321,15 @@ footer a{text-decoration:none;border-bottom:1px solid #6B4A3A}
         <p class="voce">"Ci siamo sentiti come a casa, come se davanti avessimo un'amica."<small>Le famiglie, alla fine del set</small></p>
         <p class="voce">"Nelle foto siamo veramente noi, così come siamo a casa."<small>Le famiglie, quando ricevono le foto</small></p>
       </div>
-      <p class="completa"><b>Francesca, completa qui</b>Mandaci 2 o 3 messaggi veri di famiglie (o recensioni Google) con il nome di battesimo, tipo "Giulia, mamma di Tommaso", chiedendo prima il permesso. E quante famiglie hai fotografato dal primo set di Natale a oggi, anche più o meno.</p>
-      <div class="screen">
-        <div class="foto r916" data-foto="msg-1"><svg><use href="#cam"/></svg>Messaggio di una famiglia</div>
-        <div class="foto r916" data-foto="msg-2"><svg><use href="#cam"/></svg>Messaggio di una famiglia</div>
-        <div class="foto r916" data-foto="msg-3"><svg><use href="#cam"/></svg>Foto appesa in un salotto</div>
+      <p class="completa"><b>Francesca, completa qui</b>Ho messo i messaggi che mi hai mandato, senza nomi né foto profilo. Mi confermi che le famiglie sono d'accordo a vederli qui, insieme alle foto dei bambini? Se vogliono, sotto ogni messaggio mettiamo il nome di battesimo (tipo "Giulia, mamma di Tommaso"). E quante famiglie hai fotografato dal primo set di Natale a oggi, anche più o meno?</p>
+      <div class="screen" aria-label="Messaggi delle famiglie">
+        <img src="img/msg-bella.jpg" alt="Messaggio di una famiglia: Le foto sono stupende, mi hai fatto emozionare tantissimo. In queste foto riesco finalmente a vedermi bella." width="800" height="626" loading="lazy">
+        <img src="img/msg-rimpianto.jpg" alt="Messaggio di una famiglia: Ieri sera ci siamo messi a guardare le foto. Riesci a cogliere gli attimi più autentici senza mai essere invasiva. L'unico vero rimpianto? Non averle fatte prima." width="739" height="1090" loading="lazy">
+        <img src="img/msg-occhi-chiusi.jpg" alt="Messaggio di una famiglia: Ormai tu per noi sei la certezza, ti scegliamo ad occhi chiusi. Foto del tutto spontanee, dove la perfezione nelle pose non ha avuto la meglio." width="800" height="898" loading="lazy">
+        <img src="img/msg-parole.jpg" alt="Messaggio di una famiglia: Sinceramente mi mancano le parole giuste. Sono stupende, meravigliose e soprattutto vive." width="800" height="834" loading="lazy">
+        <img src="img/msg-eterni.jpg" alt="Messaggio di una famiglia: Sei riuscita a rendere eterni momenti che porteremo per sempre nel cuore." width="577" height="865" loading="lazy">
       </div>
+      <p class="scorri">Scorri per leggerne altri →</p>
     </div>
   </div>
 </section>
